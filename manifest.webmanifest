@@ -1,7 +1,7 @@
 {
     "name": "Who Wants To Be A President",
     "short_name": "Who Wants To Be A President",
-    "start_url": "index.html",
+    "start_url": "details.html",
     "display": "fullscreen",
     "background_color": "#231F20",
     "theme_color": "#000",
