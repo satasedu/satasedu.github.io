@@ -1,111 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Satas Edu</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-cyborg-gaming.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Who Wants To Be A President</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- Add the favicon link -->
+    <link rel="icon" href="Build/icon.png" type="image/png">
+    
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #unity-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
-<body>
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  <body>
+    <div id="unity-container">
+      <canvas id="unity-canvas" tabindex="-1"></canvas>
     </div>
-  </div>
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <a href="index.html" class="logo">
-                        <img src="assets/images/logo.png" alt="">
-                    </a>
-                    <div class="search-input">
-                      <form id="search" action="#">
-                        <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword" onkeypress="handle" />
-                        <i class="fa fa-search"></i>
-                      </form>
-                    </div>
-                    <ul class="nav">
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="browse.html">Browse</a></li>
-                        <li><a href="https://sman1-tasik.sch.id/"> About <img src="assets/images/profile-header.jpg" alt=""></a></li>
-                    </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                </nav>
-            </div>
-        </div>
-    </div>
-  </header>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="page-content">
-          <div class="main-banner">
-            <div class="row">
-              <div class="col-lg-7">
-                <div class="header-text">
-                  <h6>Welcome To Satas Edu</h6>
-                  <h4><em>Browse</em> Our Student Games Here</h4>
-                  <div class="main-button">
-                    <a href="browse.html">Browse Now</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="most-popular">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="heading-section">
-                  <h4><em>Play</em> Our Educational Games!</h4>
-                </div>
-                <div class="row">
-                  <a href="details.html">
-                    <div class="col-lg-3 col-sm-6">
-                      <div class="item">
-                        <img src="assets/images/icon.png" alt="">
-                        <h4>Who Wants To Be a President<br><span>2023</span></h4>
-                      </div>
-                  </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © SATAS EDU</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+    <script src="Build/WWTBaP.loader.js"></script>
+    <script>
+       function resizeCanvas() {
+        var canvas = document.querySelector("#unity-canvas");
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+
+      function adjustCanvasSize() {
+        var canvas = document.querySelector("#unity-canvas");
+        if (canvas) {
+          createUnityInstance(canvas, {
+            dataUrl: "Build/WWTBaP.data",
+            frameworkUrl: "Build/WWTBaP.framework.js",
+            codeUrl: "Build/WWTBaP.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "Who Wants To Be A President",
+            productVersion: "1.0.2",
+          });
+          resizeCanvas();
+        }
+      }
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        adjustCanvasSize(); // Initially adjust canvas size on mobile devices
+      }
+
+      window.addEventListener("load", adjustCanvasSize); // Make sure to adjust canvas size after page load
+    </script>
   </body>
 </html>
